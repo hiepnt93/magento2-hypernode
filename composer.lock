@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b69910deb0e577cf0edc4bd87d79b61f",
+    "content-hash": "26348c0511459ea12f6157679c6bc9e8",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -21919,6 +21919,40 @@
                 }
             ],
             "time": "2021-11-15T18:01:18+00:00"
+        },
+        {
+            "name": "hipex/deploy-configuration",
+            "version": "2.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/HipexBV/DeployConfiguration.git",
+                "reference": "fad8badad30db21943f25badfb1a7418c494669f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/HipexBV/DeployConfiguration/zipball/fad8badad30db21943f25badfb1a7418c494669f",
+                "reference": "fad8badad30db21943f25badfb1a7418c494669f",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/HipexDeployConfiguration/functions.php"
+                ],
+                "psr-4": {
+                    "HipexDeployConfiguration\\": "src/HipexDeployConfiguration/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0"
+            ],
+            "description": "Hipex deploy image configuration files",
+            "support": {
+                "issues": "https://github.com/HipexBV/DeployConfiguration/issues",
+                "source": "https://github.com/HipexBV/DeployConfiguration/tree/2.4.2"
+            },
+            "time": "2021-04-12T09:25:02+00:00"
         },
         {
             "name": "jms/metadata",

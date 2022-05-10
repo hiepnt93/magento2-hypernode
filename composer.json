@@ -38,6 +38,7 @@
     "allure-framework/allure-phpunit": "~1.5.0",
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
     "friendsofphp/php-cs-fixer": "~3.3.0",
+    "hipex/deploy-configuration": "^2.4",
     "lusitanian/oauth": "~0.8.10",
     "magento/magento-coding-standard": "*",
     "magento/magento2-functional-testing-framework": "^3.7",
