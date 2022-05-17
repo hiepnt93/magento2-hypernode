@@ -17,5 +17,4 @@ jobs:
         - uses: webfactory/ssh-agent@v0.5.4
           with:
               ssh-private-key: ${{ secrets.KOMKOMMERSTORE_STAGING_PRIV_KEY }}
-        - run: cd deploy && composer install --verbose --no-progress --no-interaction --optimize-autoloader --no-scripts --no-plugins --ignore-platform-reqs && cd ../
         - run: hipex-deploy deploy staging
