@@ -23,5 +23,6 @@ jobs:
         - uses: webfactory/ssh-agent@v0.5.4
           with:
               ssh-private-key: ${{ secrets.PRIVATE_KEY }}
-        - run: cd deploy && hipex-deploy build
-        - run: ./deploy/vendor/bin/dep deploy -vvv staging
+        - run: mkdir build
+        - run: cd build && hipex-deploy build
+        - run: ./build/vendor/bin/dep deploy -vvv staging
