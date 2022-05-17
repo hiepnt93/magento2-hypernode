@@ -2,8 +2,6 @@
 
 namespace HipexDeployConfiguration;
 
-use HipexDeployConfiguration\Command\Command;
-
 $configuration = new ApplicationTemplate\Magento2(
     'git@github.com:ByteInternet/magento2.komkommer.store.git',
     ['en_US'],
@@ -34,8 +32,5 @@ $configuration->setSharedFolders([
     'pub/sitemaps',
     'pub/static/_cache'
 ]);
-
-$configuration->addBuildCommand(new Command('composer install --ignore-platform-reqs'));
-
 
 return $configuration;
