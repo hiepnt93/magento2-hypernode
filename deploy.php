@@ -37,4 +37,5 @@ $configuration->setSharedFolders([
 
 $configuration->addBuildCommand(new Command('composer install --ignore-platform-reqs'));
 
+
 return $configuration;
