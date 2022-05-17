@@ -10,7 +10,7 @@ $configuration = new ApplicationTemplate\Magento2(
 
 $configuration->setPhpVersion('php81'); // @NOTE(timon): is this ok? Normally this would be php74 or something but that doesn't apply for Hypernode.
 
-$stagingStage = $configuration->addStage('staging', 'hipex.komkommer.store', 'hypernode');
+$stagingStage = $configuration->addStage('staging', 'staging.magento2.komkommer.store', 'hypernode');
 $stagingStage->addServer('production1135-hypernode.hipex.io');
 
 $productionStage = $configuration->addStage('production', 'magento2.komkommer.store', 'app');
@@ -28,7 +28,7 @@ $configuration->setSharedFolders([
     'var/session',
     'var/report',
     'var/export',
-    'pub/media',,
+    'pub/media',
     'pub/sitemaps',
     'pub/static/_cache'
 ]);
