@@ -1,20 +1,17 @@
-name: Deploy
+name: deploy
 
-on:
-  push:
+on: push
 
 jobs:
-    deploy_staging:
+  deploy_staging:
         runs-on: ubuntu-latest
         if: github.ref == 'refs/heads/staging'
         container: hipex/deploy:v2.13.0-alpha.1-php8.1-node18
         steps:
         - uses: actions/checkout@v2
         - uses: actions/cache@v2
-          with:
-              path: /tmp/composer-cache
-              key: ${{ runner.os }}-composer
         - uses: webfactory/ssh-agent@v0.5.4
           with:
-              ssh-private-key: ${{ secrets.KOMKOMMERSTORE_STAGING_PRIV_KEY }}
+              ssh-private-key: ${{ secrets.PRIVATE_KEY }}
+        - run: hipex-deploy build
         - run: hipex-deploy deploy staging
