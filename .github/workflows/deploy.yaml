@@ -35,6 +35,7 @@ jobs:
         path: build/build.tgz
 
   deploy_staging:
+    needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/setup-deploy-production1135' || github.ref == 'refs/heads/acceptance'
     container: hipex/deploy:v2.13.0-alpha.1-php8.1-node18
@@ -52,6 +53,7 @@ jobs:
       run: hipex-deploy deploy staging -vvv
 
   deploy_production:
+    needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     container: docker.hypernode.com/hypernode/deploy:alpha
