@@ -25,3 +25,5 @@ jobs:
               ssh-private-key: ${{ secrets.PRIVATE_KEY }}
         - run: hipex-deploy build -vvv
         - run: hipex-deploy deploy staging -vvv
+        - if: failure()
+          run: find /github/home/.ssh/
