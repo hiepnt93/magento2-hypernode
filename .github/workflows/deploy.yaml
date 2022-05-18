@@ -37,7 +37,7 @@ jobs:
   deploy_staging:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/setup-deploy-production1135' || github.ref == 'refs/heads/acceptance'
+    if: github.ref == 'refs/heads/staging'
     container: hipex/deploy:v2.13.0-alpha.1-php8.1-node18
     steps:
     - uses: actions/checkout@v2
