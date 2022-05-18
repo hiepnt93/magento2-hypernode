@@ -1,6 +1,11 @@
-name: deploy
+name: build and deploy
 
-on: push
+on:
+  push:
+    branches:
+      - 'setup-deploy-production1135'
+      - 'acceptance'
+      - 'master'
 
 env:
   COMPOSER_CACHE_DIR: /tmp/composer-cache
@@ -10,19 +15,58 @@ defaults:
     shell: bash
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: docker.hypernode.com/hypernode/deploy:alpha
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v2
+      with:
+        path: /tmp/composer-cache
+        key: ${{ runner.os }}-composer
+    - uses: webfactory/ssh-agent@v0.5.4
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - run: hipex-deploy build -vvv
+    - name: archive production artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: deployment-build
+        path: build/build.tgz
+
   deploy_staging:
-        runs-on: ubuntu-latest
-        if: github.ref == 'refs/heads/setup-deploy-production1135'
-        container: hipex/deploy:v2.13.0-alpha.1-php8.1-node18
-        steps:
-        - uses: actions/checkout@v2
-        - uses: actions/cache@v2
-          with:
-            path: /tmp/composer-cache
-            key: ${{ runner.os }}-composer
-        - uses: webfactory/ssh-agent@v0.5.4
-          with:
-              ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-        - run: mkdir -p $HOME/.ssh
-        - run: hipex-deploy build -vvv
-        - run: hipex-deploy deploy staging -vvv
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/setup-deploy-production1135' || github.ref == 'refs/heads/acceptance'
+    container: hipex/deploy:v2.13.0-alpha.1-php8.1-node18
+    steps:
+    - uses: actions/checkout@v2
+    - name: download build artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: deployment-build
+    - uses: webfactory/ssh-agent@v0.5.4
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - run: mkdir -p $HOME/.ssh
+    - name: deploy to staging
+      run: hipex-deploy deploy staging -vvv
+
+  deploy_production:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    container: docker.hypernode.com/hypernode/deploy:alpha
+    steps:
+    - uses: actions/checkout@v2
+    - name: download build artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: deployment-build
+    - uses: actions/cache@v2
+      with:
+        path: /tmp/composer-cache
+        key: ${{ runner.os }}-composer
+    - uses: webfactory/ssh-agent@v0.5.4
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - run: mkdir -p $HOME/.ssh
+    - run: hipex-deploy deploy production -vvv
