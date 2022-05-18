@@ -16,12 +16,12 @@ jobs:
         container: hipex/deploy:v2.13.0-alpha.1-php8.1-node18
         steps:
         - uses: actions/checkout@v2
-        - uses: php-actions/composer@v6
+        - uses: actions/cache@v2
           with:
             path: /tmp/composer-cache
             key: ${{ runner.os }}-composer
         - uses: webfactory/ssh-agent@v0.5.4
           with:
               ssh-private-key: ${{ secrets.PRIVATE_KEY }}
-        - run: hipex-deploy build
+#        - run: hipex-deploy build
         - run: hipex-deploy -vvv staging
