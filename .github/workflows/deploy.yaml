@@ -3,8 +3,7 @@ name: build and deploy
 on:
   push:
     branches:
-      - 'setup-deploy-production1135'
-      - 'acceptance'
+      - 'staging'
       - 'master'
 
 env:
