@@ -2,6 +2,10 @@
 
 namespace HipexDeployConfiguration;
 
+use function Deployer\set;
+
+set('bin/composer', '/usr/local/bin/composer2');
+
 $configuration = new ApplicationTemplate\Magento2(
     'git@github.com:ByteInternet/magento2.komkommer.store.git',
     ['en_US'],
