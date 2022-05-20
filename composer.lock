@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2c34cbeba4a27ade7f3e2a3a4430e0f9",
+    "content-hash": "ca32636ba87895e214506d7b0fe24207",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -4249,6 +4249,148 @@
                 }
             ],
             "time": "2022-04-17T13:12:02+00:00"
+        },
+        {
+            "name": "magefan/module-admin-user-guide",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/magefan/module-admin-user-guide.git",
+                "reference": "35f950396e7a443cf93e00603e45b2da23c03b58"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/magefan/module-admin-user-guide/zipball/35f950396e7a443cf93e00603e45b2da23c03b58",
+                "reference": "35f950396e7a443cf93e00603e45b2da23c03b58",
+                "shasum": ""
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Magefan\\AdminUserGuide\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Admin panel user guides.",
+            "support": {
+                "issues": "https://github.com/magefan/module-admin-user-guide/issues",
+                "source": "https://github.com/magefan/module-admin-user-guide/tree/2.0.1"
+            },
+            "time": "2021-12-30T07:25:20+00:00"
+        },
+        {
+            "name": "magefan/module-blog",
+            "version": "2.10.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/magefan/module-blog.git",
+                "reference": "5aad73cc0c74558dd4b059a2e83b767b87a5961c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/magefan/module-blog/zipball/5aad73cc0c74558dd4b059a2e83b767b87a5961c",
+                "reference": "5aad73cc0c74558dd4b059a2e83b767b87a5961c",
+                "shasum": ""
+            },
+            "require": {
+                "magefan/module-community": ">=2.1.10",
+                "magefan/module-wysiwyg-advanced": ">=2.0.12"
+            },
+            "suggest": {
+                "magefan/module-blog-amp": "Install this module to activate Blog integration with the Plumrocket AMP extension.",
+                "magefan/module-blog-comments-recaptcha": "Install this module to activate ReCaptcha on blog comments form to protect against spam.",
+                "magefan/module-blog-graph-ql": "Install this module to activate GraphQl integration for the blog."
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Magefan\\Blog\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Implements Blog functionality on Magento 2 store",
+            "support": {
+                "issues": "https://github.com/magefan/module-blog/issues",
+                "source": "https://github.com/magefan/module-blog/tree/2.10.8"
+            },
+            "time": "2022-05-10T12:16:19+00:00"
+        },
+        {
+            "name": "magefan/module-community",
+            "version": "2.1.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/magefan/module-community.git",
+                "reference": "ff7fb0142f5326dcb35276a00a3015f5c2cbc2e6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/magefan/module-community/zipball/ff7fb0142f5326dcb35276a00a3015f5c2cbc2e6",
+                "reference": "ff7fb0142f5326dcb35276a00a3015f5c2cbc2e6",
+                "shasum": ""
+            },
+            "require": {
+                "magefan/module-admin-user-guide": ">=2.0.1"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Magefan\\Community\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "support": {
+                "issues": "https://github.com/magefan/module-community/issues",
+                "source": "https://github.com/magefan/module-community/tree/2.1.10"
+            },
+            "time": "2022-04-19T07:01:39+00:00"
+        },
+        {
+            "name": "magefan/module-wysiwyg-advanced",
+            "version": "2.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/magefan/module-wysiwyg-advanced.git",
+                "reference": "760b0746bb4f7acd0da10a9b0bff928bd52cfad9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/magefan/module-wysiwyg-advanced/zipball/760b0746bb4f7acd0da10a9b0bff928bd52cfad9",
+                "reference": "760b0746bb4f7acd0da10a9b0bff928bd52cfad9",
+                "shasum": ""
+            },
+            "require": {
+                "magefan/module-community": ">=2.1.8"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Magefan\\WysiwygAdvanced\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0",
+                "AFL-3.0"
+            ],
+            "description": "Extend TinyMCE 4 in Magento 2",
+            "support": {
+                "issues": "https://github.com/magefan/module-wysiwyg-advanced/issues",
+                "source": "https://github.com/magefan/module-wysiwyg-advanced/tree/2.0.12"
+            },
+            "time": "2022-04-20T08:57:37+00:00"
         },
         {
             "name": "magento/composer",
