@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "26348c0511459ea12f6157679c6bc9e8",
+    "content-hash": "2c34cbeba4a27ade7f3e2a3a4430e0f9",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -50,6 +50,43 @@
                 "source": "https://github.com/2tvenom/CBOREncode/tree/1.0.2"
             },
             "time": "2020-10-27T07:22:41+00:00"
+        },
+        {
+            "name": "avstudnitz/scopehint2",
+            "version": "1.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/avstudnitz/AvS_ScopeHint2.git",
+                "reference": "7e86132f804b0b936de62c270e3f8a73d8430c93"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/avstudnitz/AvS_ScopeHint2/zipball/7e86132f804b0b936de62c270e3f8a73d8430c93",
+                "reference": "7e86132f804b0b936de62c270e3f8a73d8430c93",
+                "shasum": ""
+            },
+            "require": {
+                "magento/framework": "~100.0|~101.0|~102.0|~103.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "AvS\\ScopeHint\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0"
+            ],
+            "description": "N/A",
+            "support": {
+                "issues": "https://github.com/avstudnitz/AvS_ScopeHint2/issues",
+                "source": "https://github.com/avstudnitz/AvS_ScopeHint2/tree/1.1.5"
+            },
+            "time": "2022-01-14T07:09:34+00:00"
         },
         {
             "name": "aws/aws-crt-php",

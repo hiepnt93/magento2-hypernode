@@ -313,6 +313,7 @@ return [
         'Magento_Wishlist' => 1,
         'Magento_WishlistAnalytics' => 1,
         'Magento_WishlistGraphQl' => 1,
+        'AvS_ScopeHint' => 1,
         'Mollie_Payment' => 1
     ],
     'scopes' => [
