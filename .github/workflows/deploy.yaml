@@ -16,7 +16,7 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: hipex/deploy:v2.13.0-alpha.1-php8.1-node18
+    container: hipex/deploy:v2.13.0-alpha.2-php8.1-node18
     steps:
     - uses: actions/checkout@v2
     - uses: actions/cache@v2
@@ -37,7 +37,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/staging'
-    container: hipex/deploy:v2.13.0-alpha.1-php8.1-node18
+    container: hipex/deploy:v2.13.0-alpha.2-php8.1-node18
     steps:
     - uses: actions/checkout@v2
     - name: download build artifact
