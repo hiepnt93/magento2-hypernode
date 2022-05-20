@@ -314,6 +314,10 @@ return [
         'Magento_WishlistAnalytics' => 1,
         'Magento_WishlistGraphQl' => 1,
         'AvS_ScopeHint' => 1,
+        'Magefan_AdminUserGuide' => 0,
+        'Magefan_Community' => 0,
+        'Magefan_Blog' => 1,
+        'Magefan_WysiwygAdvanced' => 0,
         'Mollie_Payment' => 1
     ],
     'scopes' => [
