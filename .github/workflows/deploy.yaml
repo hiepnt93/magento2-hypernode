@@ -56,7 +56,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
-    container: docker.hypernode.com/hypernode/deploy:alpha
+    container: quay.io/hypernode/deploy:v1.0.0-alpa-php8.1-node18
     steps:
     - uses: actions/checkout@v2
     - name: download build artifact
