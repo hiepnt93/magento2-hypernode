@@ -2,6 +2,8 @@
 
 namespace HipexDeployConfiguration;
 
+use HipexDeployConfiguration\AfterDeployTask\SlackWebhook;
+
 \Deployer\set('bin/composer', '/usr/local/bin/composer2');
 \Deployer\set('default_timeout', 3600);
 \Deployer\set('keep_releases', 1);
@@ -18,6 +20,7 @@ $stagingStage->addServer('production1135-hypernode.hipex.io');
 
 $productionStage = $configuration->addStage('production', 'magento2.komkommer.store', 'app');
 $productionStage->addServer('hntestgroot.hypernode.io');
+$configuration->addAfterDeployTask(new SlackWebhook());
 
 $configuration->setSharedFiles([
     'app/etc/env.php',
