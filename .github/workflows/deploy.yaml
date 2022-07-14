@@ -8,6 +8,7 @@ on:
 
 env:
   COMPOSER_CACHE_DIR: /tmp/composer-cache
+  SLACK_WEBHOOK: https://hooks.slack.com/services/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
 
 defaults:
   run:
