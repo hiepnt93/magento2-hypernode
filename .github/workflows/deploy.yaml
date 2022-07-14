@@ -16,7 +16,7 @@ defaults:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: hipex/deploy:v2.13.0-alpha.3-php8.1-node18
+    container: quay.io/hypernode/deploy:v1.0.0-alpa-php8.1-node18
     steps:
     - uses: actions/checkout@v2
     - uses: actions/cache@v2
