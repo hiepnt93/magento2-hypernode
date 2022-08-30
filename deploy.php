@@ -1,16 +1,11 @@
 <?php
 
-namespace HipexDeployConfiguration;
-
-use HipexDeployConfiguration\ServerRole;
-use HipexDeployConfiguration\AfterDeployTask\SlackWebhook;
+namespace Hypernode\DeployConfiguration;
 
 \Deployer\set('bin/composer', '/usr/local/bin/composer2');
 \Deployer\set('default_timeout', 3600);
 \Deployer\set('keep_releases', 1);
-$configuration = new ApplicationTemplate\Magento2(
-    ['en_US'],
-);
+$configuration = new ApplicationTemplate\Magento2(['en_US']);
 
 $configuration->setPhpVersion('php81'); // @NOTE(timon): is this ok? Normally this would be php74 or something but that doesn't apply for Hypernode.
 
@@ -18,8 +13,7 @@ $stagingStage = $configuration->addStage('staging', 'staging.magento2.komkommer.
 $stagingStage->addServer('production1135-hypernode.hipex.io');
 
 $productionStage = $configuration->addStage('production', 'magento2.komkommer.store', 'app');
-$productionStage->addServer('hntestgroot.hypernode.io', [ServerRole::APPLICATION]);
-//$configuration->addAfterDeployTask(new SlackWebhook());
+$productionStage->addServer('hntestgroot.hypernode.io');
 
 $configuration->setSharedFiles([
     'app/etc/env.php',
