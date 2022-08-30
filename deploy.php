@@ -5,11 +5,7 @@ namespace Hypernode\DeployConfiguration;
 \Deployer\set('bin/composer', '/usr/local/bin/composer2');
 \Deployer\set('default_timeout', 3600);
 \Deployer\set('keep_releases', 1);
-$configuration = new ApplicationTemplate\Magento2(
-    'git@github.com:ByteInternet/magento2.komkommer.store.git',
-    ['en_US'],
-    ['en_US']
-);
+$configuration = new ApplicationTemplate\Magento2(['en_US']);
 
 $configuration->setPhpVersion('php81'); // @NOTE(timon): is this ok? Normally this would be php74 or something but that doesn't apply for Hypernode.
 

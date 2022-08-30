@@ -15,9 +15,9 @@ defaults:
     shell: bash
 
 jobs:
-  build:
+  build_staging:
     runs-on: ubuntu-latest
-    #container: quay.io/hypernode/deploy:v1.0.0-alpha-php8.1-node18
+    if: github.ref == 'refs/heads/staging'
     container: hipex/deploy:v2.13.0-alpha.3-php8.1-node18
     steps:
     - uses: actions/checkout@v2
@@ -36,7 +36,7 @@ jobs:
         path: build/build.tgz
 
   deploy_staging:
-    needs: build
+    needs: build_staging
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/staging'
     container: hipex/deploy:v2.13.0-alpha.3-php8.1-node18
@@ -54,11 +54,31 @@ jobs:
     - name: deploy to staging
       run: hipex-deploy deploy staging -vvv
 
-  deploy_production:
-    needs: build
+  build_production:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
-    container: quay.io/hypernode/deploy:v1.0.0-alpha-php8.1-node18
+    container: quay.io/hypernode/deploy:v2.0-php8.1-node18
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v2
+      with:
+        path: /tmp/composer-cache
+        key: ${{ runner.os }}-composer
+    - uses: webfactory/ssh-agent@v0.5.4
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - run: hipex-deploy build -vvv
+    - name: archive production artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: deployment-build
+        path: build/build.tgz
+
+  deploy_production:
+    needs: build_production
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    container: quay.io/hypernode/deploy:v2.0-php8.1-node18
     steps:
     - uses: actions/checkout@v2
     - name: download build artifact
