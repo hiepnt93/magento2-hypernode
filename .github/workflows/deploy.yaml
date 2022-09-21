@@ -5,6 +5,7 @@ on:
     branches:
       - 'staging'
       - 'master'
+      - 'deploy'
 
 env:
   COMPOSER_CACHE_DIR: /tmp/composer-cache
