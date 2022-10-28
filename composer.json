@@ -12,8 +12,9 @@
     "magefan/module-blog": "^2.10",
     "magento/composer-dependency-version-audit-plugin": "~0.1",
     "magento/composer-root-update-plugin": "~2.0",
-    "magento/product-community-edition": "2.4.4",
-    "mollie/magento2": "^2.10"
+    "magento/product-community-edition": "2.4.5",
+    "mollie/magento2": "^2.10",
+    "webonyx/graphql-php": "14.11.6"
   },
   "autoload": {
     "exclude-from-classmap": [

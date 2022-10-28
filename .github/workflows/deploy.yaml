@@ -5,6 +5,7 @@ on:
     branches:
       - 'staging'
       - 'master'
+      - 'deploy'
 
 env:
   COMPOSER_CACHE_DIR: /tmp/composer-cache
@@ -56,8 +57,8 @@ jobs:
 
   build_production:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    container: quay.io/hypernode/deploy:v2.0-php8.1-node18
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/deploy'
+    container: quay.io/hypernode/deploy:3.0-php8.1-node18
     steps:
     - uses: actions/checkout@v2
     - uses: actions/cache@v2
@@ -77,8 +78,8 @@ jobs:
   deploy_production:
     needs: build_production
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
-    container: quay.io/hypernode/deploy:v2.0-php8.1-node18
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/deploy'
+    container: quay.io/hypernode/deploy:3.0-php8.1-node18
     steps:
     - uses: actions/checkout@v2
     - name: download build artifact
