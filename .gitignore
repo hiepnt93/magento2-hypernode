@@ -2,6 +2,7 @@ app/*.php
 app/etc/*
 !app/etc/config.php
 
+.idea/
 bin/
 dev/
 generated/
