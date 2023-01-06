@@ -25,8 +25,14 @@ task('magento:configure_env:acceptance', static function () {
     invoke('magento:cache:flush');
 })->select('stage=acceptance');
 
+task('hmv:configure:acceptance', static function () {
+    run('hypernode-manage-vhosts {{hostname}} --https --force-https --type magento2 --webroot {{current_path}}/{{public_folder}}');
+})->select('stage=acceptance');
+
 before('magento:config:import', 'magento:prepare_env:acceptance');
 after('magento:config:import', 'magento:configure_env:acceptance');
+
+$configuration->addDeployTask('hmv:configure:acceptance');
 
 $stagingStage = $configuration->addStage('staging', 'staging.magento2.komkommer.store', 'hypernode');
 $stagingStage->addServer('production1135-hypernode.hipex.io');
