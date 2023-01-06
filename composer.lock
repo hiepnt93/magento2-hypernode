@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1cfdc604b80d5771da70e2faf86bad32",
+    "content-hash": "7a3c87a9dcf426ceb9f2db288d394266",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -22541,6 +22541,49 @@
             "time": "2022-02-04T12:51:07+00:00"
         },
         {
+            "name": "deployer/deployer",
+            "version": "v7.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/deployphp/deployer.git",
+                "reference": "99a57a9035cfe0eeae5dba5befe5411ac0f3ac72"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/deployphp/deployer/zipball/99a57a9035cfe0eeae5dba5befe5411ac0f3ac72",
+                "reference": "99a57a9035cfe0eeae5dba5befe5411ac0f3ac72",
+                "shasum": ""
+            },
+            "bin": [
+                "dep"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anton Medvedev",
+                    "email": "anton@medv.io"
+                }
+            ],
+            "description": "Deployment Tool",
+            "homepage": "https://deployer.org",
+            "support": {
+                "docs": "https://deployer.org/docs",
+                "issues": "https://github.com/deployphp/deployer/issues",
+                "source": "https://github.com/deployphp/deployer"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/antonmedv",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-09-10T07:44:30+00:00"
+        },
+        {
             "name": "doctrine/annotations",
             "version": "1.13.3",
             "source": {
@@ -22848,6 +22891,48 @@
                 }
             ],
             "time": "2021-11-15T18:01:18+00:00"
+        },
+        {
+            "name": "hypernode/deploy-configuration",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ByteInternet/hypernode-deploy-configuration.git",
+                "reference": "400b3b311e7f401220dbcc5d7901cc68ec212caf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ByteInternet/hypernode-deploy-configuration/zipball/400b3b311e7f401220dbcc5d7901cc68ec212caf",
+                "reference": "400b3b311e7f401220dbcc5d7901cc68ec212caf",
+                "shasum": ""
+            },
+            "require": {
+                "deployer/deployer": "^7.0",
+                "psr/log": "^1.0"
+            },
+            "conflict": {
+                "hipex/deploy-configuration": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/autoload.php",
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "Hypernode\\DeployConfiguration\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "OSL-3.0"
+            ],
+            "description": "Hypernode deploy configuration files",
+            "support": {
+                "issues": "https://github.com/ByteInternet/hypernode-deploy-configuration/issues",
+                "source": "https://github.com/ByteInternet/hypernode-deploy-configuration/tree/3.1.0"
+            },
+            "time": "2022-11-23T11:16:15+00:00"
         },
         {
             "name": "jms/metadata",

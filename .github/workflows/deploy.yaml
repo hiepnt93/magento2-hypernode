@@ -1,6 +1,7 @@
-name: build and deploy
+name: Deploy
 
 on:
+  pull_request:
   push:
     branches:
       - 'staging'
@@ -16,17 +17,17 @@ defaults:
     shell: bash
 
 jobs:
-  build_staging:
+  build:
+    name: Build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/staging'
-    container: hipex/deploy:v2.13.0-alpha.3-php8.1-node18
+    container: quay.io/hypernode/deploy:3-php8.1-node18
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/cache@v2
+    - uses: actions/checkout@v3
+    - uses: actions/cache@v3
       with:
         path: /tmp/composer-cache
         key: ${{ runner.os }}-composer
-    - uses: webfactory/ssh-agent@v0.5.4
+    - uses: webfactory/ssh-agent@v0.7.0
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - run: hipex-deploy build -vvv
@@ -37,61 +38,68 @@ jobs:
         path: build/build.tgz
 
   deploy_staging:
-    needs: build_staging
+    name: Deploy to staging
+    needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/staging'
     container: hipex/deploy:v2.13.0-alpha.3-php8.1-node18
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - name: download build artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: deployment-build
+          path: build/
+      - uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - run: mkdir -p $HOME/.ssh
+      - name: deploy to staging
+        run: hipex-deploy deploy staging -vvv
+
+  deploy_acceptance:
+    name: Deploy to acceptance
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/staging'
+    container: quay.io/hypernode/deploy:3-php8.1-node18
+    steps:
+    - uses: actions/checkout@v3
     - name: download build artifact
       uses: actions/download-artifact@v3
       with:
         name: deployment-build
         path: build/
+    - uses: actions/cache@v3
+      with:
+        path: /tmp/composer-cache
+        key: ${{ runner.os }}-composer
     - uses: webfactory/ssh-agent@v0.5.4
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - run: mkdir -p $HOME/.ssh
-    - name: deploy to staging
-      run: hipex-deploy deploy staging -vvv
-
-  build_production:
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/deploy'
-    container: quay.io/hypernode/deploy:3.0-php8.1-node18
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/cache@v2
-      with:
-        path: /tmp/composer-cache
-        key: ${{ runner.os }}-composer
-    - uses: webfactory/ssh-agent@v0.5.4
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-    - run: hipex-deploy build -vvv
-    - name: archive production artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: deployment-build
-        path: build/build.tgz
+    - run: hypernode-deploy deploy acceptance -vvv
+      env:
+        HYPERNODE_API_TOKEN: ${{ secrets.HYPERNODE_API_TOKEN }}
 
   deploy_production:
-    needs: build_production
+    name: Deploy to production
+    needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/deploy'
-    container: quay.io/hypernode/deploy:3.0-php8.1-node18
+    container: quay.io/hypernode/deploy:3-php8.1-node18
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: download build artifact
       uses: actions/download-artifact@v3
       with:
         name: deployment-build
         path: build/
-    - uses: actions/cache@v2
+    - uses: actions/cache@v3
       with:
         path: /tmp/composer-cache
         key: ${{ runner.os }}-composer
-    - uses: webfactory/ssh-agent@v0.5.4
+    - uses: webfactory/ssh-agent@v0.7.0
       with:
         ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
     - run: mkdir -p $HOME/.ssh
