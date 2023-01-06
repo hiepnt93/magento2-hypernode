@@ -6,10 +6,18 @@ namespace Hypernode\DeployConfiguration;
 
 use Hypernode\DeployConfiguration\PlatformConfiguration\HypernodeSettingConfiguration;
 
+use function Deployer\{before, run, task};
+
 $configuration = new ApplicationTemplate\Magento2(['en_US']);
 $configuration->addPlatformConfiguration(
     new HypernodeSettingConfiguration('php_version', '8.1')
 );
+
+task('copy:production_env', static function () {
+    run('cp ~/apps/magento2.komkommer.store/shared/app/etc/env.php {{release_path}}/app/etc/env.php');
+})->select('stage=acceptance');
+
+before('magento:config:import', 'copy:production_env');
 
 $stagingStage = $configuration->addStage('staging', 'staging.magento2.komkommer.store', 'hypernode');
 $stagingStage->addServer('production1135-hypernode.hipex.io');
