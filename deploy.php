@@ -13,26 +13,26 @@ $configuration->addPlatformConfiguration(
     new HypernodeSettingConfiguration('php_version', '8.1')
 );
 
-task('magento:prepare_env:acceptance', static function () {
+task('magento:prepare_env:test', static function () {
     run('cp ~/apps/magento2.komkommer.store/shared/app/etc/env.php {{release_path}}/app/etc/env.php');
     run('cd {{release_path}}; n98-magerun2 config:env:set db.connection.default.host mysqlmaster');
     invoke('magento:cache:flush');
-})->select('stage=acceptance');
+})->select('stage=test');
 
-task('magento:configure_env:acceptance', static function () {
+task('magento:configure_env:test', static function () {
     run('{{bin/php}} {{release_path}}/bin/magento config:set web/unsecure/base_url https://{{hostname}}/');
     run('{{bin/php}} {{release_path}}/bin/magento config:set web/secure/base_url https://{{hostname}}/');
     invoke('magento:cache:flush');
-})->select('stage=acceptance');
+})->select('stage=test');
 
-task('hmv:configure:acceptance', static function () {
+task('hmv:configure:test', static function () {
     run('hypernode-manage-vhosts {{hostname}} --https --force-https --type magento2 --webroot {{current_path}}/{{public_folder}}');
-})->select('stage=acceptance');
+})->select('stage=test');
 
-before('magento:config:import', 'magento:prepare_env:acceptance');
-after('magento:config:import', 'magento:configure_env:acceptance');
+before('magento:config:import', 'magento:prepare_env:test');
+after('magento:config:import', 'magento:configure_env:test');
 
-$configuration->addDeployTask('hmv:configure:acceptance');
+$configuration->addDeployTask('hmv:configure:test');
 
 $stagingStage = $configuration->addStage('staging', 'staging.magento2.komkommer.store', 'hypernode');
 $stagingStage->addServer('production1135-hypernode.hipex.io');
@@ -40,9 +40,9 @@ $stagingStage->addServer('production1135-hypernode.hipex.io');
 $productionStage = $configuration->addStage('production', 'magento2.komkommer.store');
 $productionStage->addServer('hntestgroot.hypernode.io');
 
-$acceptanceStage = $configuration->addStage('acceptance', 'acceptance.komkommer.store');
-$acceptanceStage->addBrancherServer('hntestgroot')
-    ->setLabels(['stage=acceptance', 'ci_ref=' . (\getenv('GITHUB_HEAD_REF') ?: 'none')]);
+$testStage = $configuration->addStage('test', 'test.komkommer.store');
+$testStage->addBrancherServer('hntestgroot')
+    ->setLabels(['stage=test', 'ci_ref=' . (\getenv('GITHUB_HEAD_REF') ?: 'none')]);
 
 $configuration->setSharedFiles([
     'app/etc/env.php',
