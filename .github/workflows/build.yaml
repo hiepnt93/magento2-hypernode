@@ -1,0 +1,26 @@
+name: Build application
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: quay.io/hypernode/deploy:3-php8.1-node18
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/cache@v3
+        with:
+          path: /tmp/composer-cache
+          key: ${{ runner.os }}-composer
+      - uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - run: hypernode-deploy build -vvv
+        env:
+          COMPOSER_CACHE_DIR: /tmp/composer-cache
+      - name: archive production artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: deployment-build
+          path: build/build.tgz

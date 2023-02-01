@@ -1,24 +1,24 @@
-name: Deploy to production
+name: Deploy to staging
 
 on:
   push:
     branches:
-      - 'master'
+      - 'staging'
 
 jobs:
   build:
     uses: ./.github/workflows/build.yaml
     secrets: inherit
 
-  deploy_production:
-    name: Deploy to production
+  deploy_staging:
+    name: Deploy to staging
     needs: build
     runs-on: ubuntu-latest
-    concurrency: production
+    concurrency: staging
     environment:
       name: production
-      url: https://magento2.komkommer.store
-    container: quay.io/hypernode/deploy:3-php8.1-node18
+      url: https://staging.magento2.komkommer.store
+    container: hipex/deploy:v2.13.0-alpha.3-php8.1-node18
     steps:
       - uses: actions/checkout@v3
       - name: download build artifact
@@ -30,4 +30,4 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - run: mkdir -p $HOME/.ssh
-      - run: hypernode-deploy deploy production -vvv
+      - run: hipex-deploy deploy staging -vvv
