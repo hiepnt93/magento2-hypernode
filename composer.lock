@@ -93,20 +93,21 @@
         },
         {
             "name": "avstudnitz/scopehint2",
-            "version": "1.1.5",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/avstudnitz/AvS_ScopeHint2.git",
-                "reference": "7e86132f804b0b936de62c270e3f8a73d8430c93"
+                "reference": "71a13626ca1e389de6f90fb1ecfbae29c4a36ce5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/avstudnitz/AvS_ScopeHint2/zipball/7e86132f804b0b936de62c270e3f8a73d8430c93",
-                "reference": "7e86132f804b0b936de62c270e3f8a73d8430c93",
+                "url": "https://api.github.com/repos/avstudnitz/AvS_ScopeHint2/zipball/71a13626ca1e389de6f90fb1ecfbae29c4a36ce5",
+                "reference": "71a13626ca1e389de6f90fb1ecfbae29c4a36ce5",
                 "shasum": ""
             },
             "require": {
-                "magento/framework": "~100.0|~101.0|~102.0|~103.0"
+                "magento/framework": "~102.0|~103.0",
+                "magento/module-config": "~100.0|~101.0"
             },
             "type": "magento2-module",
             "autoload": {
@@ -121,12 +122,12 @@
             "license": [
                 "OSL-3.0"
             ],
-            "description": "N/A",
+            "description": "Displays a hint when a configuration value is overwritten on a lower scope (website or store view).",
             "support": {
                 "issues": "https://github.com/avstudnitz/AvS_ScopeHint2/issues",
-                "source": "https://github.com/avstudnitz/AvS_ScopeHint2/tree/1.1.5"
+                "source": "https://github.com/avstudnitz/AvS_ScopeHint2/tree/1.2.2"
             },
-            "time": "2022-01-14T07:09:34+00:00"
+            "time": "2023-04-06T08:52:53+00:00"
         },
         {
             "name": "aws/aws-crt-php",
