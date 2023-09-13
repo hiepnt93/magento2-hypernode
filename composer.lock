@@ -22558,16 +22558,16 @@
         },
         {
             "name": "deployer/deployer",
-            "version": "v7.0.2",
+            "version": "v7.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/deployphp/deployer.git",
-                "reference": "99a57a9035cfe0eeae5dba5befe5411ac0f3ac72"
+                "reference": "c5c5e79d4e57445918ed24a9cdd3d85b0f261de3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/deployphp/deployer/zipball/99a57a9035cfe0eeae5dba5befe5411ac0f3ac72",
-                "reference": "99a57a9035cfe0eeae5dba5befe5411ac0f3ac72",
+                "url": "https://api.github.com/repos/deployphp/deployer/zipball/c5c5e79d4e57445918ed24a9cdd3d85b0f261de3",
+                "reference": "c5c5e79d4e57445918ed24a9cdd3d85b0f261de3",
                 "shasum": ""
             },
             "bin": [
@@ -22597,7 +22597,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-09-10T07:44:30+00:00"
+            "time": "2023-04-05T09:24:30+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -22910,16 +22910,16 @@
         },
         {
             "name": "hypernode/deploy-configuration",
-            "version": "3.1.0",
+            "version": "3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ByteInternet/hypernode-deploy-configuration.git",
-                "reference": "400b3b311e7f401220dbcc5d7901cc68ec212caf"
+                "reference": "959628f305cea2ba17b5e195cce67fc853942c03"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ByteInternet/hypernode-deploy-configuration/zipball/400b3b311e7f401220dbcc5d7901cc68ec212caf",
-                "reference": "400b3b311e7f401220dbcc5d7901cc68ec212caf",
+                "url": "https://api.github.com/repos/ByteInternet/hypernode-deploy-configuration/zipball/959628f305cea2ba17b5e195cce67fc853942c03",
+                "reference": "959628f305cea2ba17b5e195cce67fc853942c03",
                 "shasum": ""
             },
             "require": {
@@ -22946,9 +22946,9 @@
             "description": "Hypernode deploy configuration files",
             "support": {
                 "issues": "https://github.com/ByteInternet/hypernode-deploy-configuration/issues",
-                "source": "https://github.com/ByteInternet/hypernode-deploy-configuration/tree/3.1.0"
+                "source": "https://github.com/ByteInternet/hypernode-deploy-configuration/tree/3.1.3"
             },
-            "time": "2022-11-23T11:16:15+00:00"
+            "time": "2023-02-20T09:14:10+00:00"
         },
         {
             "name": "jms/metadata",
