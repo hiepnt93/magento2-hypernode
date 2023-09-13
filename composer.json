@@ -67,6 +67,7 @@
   ],
   "extra": {
     "magento-force": "override",
+    "composer-exit-on-patch-failure": true,
     "patches": {
       "magento/framework": {
         "Convert deprecated charset/collation": "patches/mysql8029/framework.patch"
