@@ -9,6 +9,7 @@
   "version": "2.4.4",
   "require": {
     "avstudnitz/scopehint2": "^1.1",
+    "cweagans/composer-patches": "^1.7",
     "magefan/module-blog": "^2.10",
     "magento/composer-dependency-version-audit-plugin": "~0.1",
     "magento/composer-root-update-plugin": "~2.0",
@@ -52,7 +53,8 @@
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true,
       "laminas/laminas-dependency-plugin": true,
-      "magento/*": true
+      "magento/*": true,
+      "cweagans/composer-patches": true
     },
     "preferred-install": "dist",
     "sort-packages": true
@@ -64,6 +66,14 @@
     }
   ],
   "extra": {
-    "magento-force": "override"
+    "magento-force": "override",
+    "patches": {
+      "magento/framework": {
+        "Convert deprecated charset/collation": "patches/mysql8029/framework.patch"
+      },
+      "magento/magento2-base": {
+        "Capture patch version of MySQL 8": "patches/mysql8029/magento2_base.patch"
+      }
+    }
   }
 }

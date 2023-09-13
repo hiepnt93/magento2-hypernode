@@ -1,0 +1,18 @@
+--- Setup/Declaration/Schema/Dto/Factories/Table.php	2023-09-13 14:24:25.076597391 +0000
++++ Setup/Declaration/Schema/Dto/Factories/Table.php	2023-09-13 14:24:17.327986904 +0000
+@@ -98,6 +98,15 @@
+         if (!isset($data['collation'])) {
+             $data['collation'] = $this->getDefaultCollation();
+         }
++        // Convert deprecated utf8_ prefix to utf8mb3_ prefix
++        if ($this->sqlVersionProvider->isMysqlGte8029()) {
++            if ($data['charset'] === 'utf8') {
++                $data['charset'] = 'utf8mb3';
++            }
++            if ($data['collation'] === 'utf8_general_ci') {
++                $data['collation'] = 'utf8mb3_general_ci';
++            }
++        }
+         //Prepare triggers
+         if (!isset($data['onCreate'])) {
+             $data['onCreate'] = '';
