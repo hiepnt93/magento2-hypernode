@@ -1,0 +1,11 @@
+--- app/etc/di.xml	2023-09-13 14:26:52.000173066 +0000
++++ app/etc/di.xml	2023-09-13 14:30:17.932398017 +0000
+@@ -1851,7 +1851,7 @@
+     <type name="Magento\Framework\DB\Adapter\SqlVersionProvider">
+         <arguments>
+             <argument name="supportedVersionPatterns" xsi:type="array">
+-                <item name="MySQL-8" xsi:type="string">^8\.0\.</item>
++                <item name="MySQL-8" xsi:type="string">^8\.0\.[0-9]+</item>
+                 <item name="MySQL-5.7" xsi:type="string">^5\.7\.</item>
+                 <item name="MariaDB-(10.2-10.4)" xsi:type="string">^10\.[2-4]\.</item>
+             </argument>
