@@ -10,7 +10,7 @@ use function Deployer\{after, before, invoke, run, task};
 
 $configuration = new ApplicationTemplate\Magento2(['en_US']);
 $configuration->addPlatformConfiguration(
-    new HypernodeSettingConfiguration('php_version', '8.1')
+    new HypernodeSettingConfiguration('php_version', '8.3')
 );
 
 task('magento:prepare_env:test', static function () {
