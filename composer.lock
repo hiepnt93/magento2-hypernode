@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c2d5f1c919eeace75cdb32ea911c513",
+    "content-hash": "89d92cf598aa3f3c3dbbbd147b2d86ee",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -18819,16 +18819,16 @@
         },
         {
             "name": "mollie/magento2",
-            "version": "2.30.1",
+            "version": "2.41.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mollie/magento2.git",
-                "reference": "53548cf1952d3870e1b89f72c2c40d5a406cc3e2"
+                "reference": "cc70022bcdd88a10ce3090190335aa0cbc9feec6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mollie/magento2/zipball/53548cf1952d3870e1b89f72c2c40d5a406cc3e2",
-                "reference": "53548cf1952d3870e1b89f72c2c40d5a406cc3e2",
+                "url": "https://api.github.com/repos/mollie/magento2/zipball/cc70022bcdd88a10ce3090190335aa0cbc9feec6",
+                "reference": "cc70022bcdd88a10ce3090190335aa0cbc9feec6",
                 "shasum": ""
             },
             "require": {
@@ -18848,7 +18848,7 @@
                 "magento/module-tax": ">=100.3.3",
                 "magento/module-ui": ">=100.3.3",
                 "magento/module-vault": ">=100.3.3",
-                "mollie/mollie-api-php": "^2.1",
+                "mollie/mollie-api-php": "^2.65",
                 "php": ">=7.3"
             },
             "type": "magento2-module",
@@ -18872,12 +18872,16 @@
                 "Apple Pay",
                 "CBC",
                 "Przelewy24",
+                "alma",
                 "api",
+                "bancomat",
+                "bancomat pay",
                 "bancontact",
                 "banktransfer",
                 "belfius",
                 "belfius direct net",
                 "billie",
+                "blik",
                 "charges",
                 "creditcard",
                 "direct debit",
@@ -18889,6 +18893,9 @@
                 "intersolve",
                 "kbc",
                 "klarna",
+                "klarnapaylater",
+                "klarnapaynow",
+                "klarnasliceit",
                 "magento 2",
                 "magento2",
                 "mistercash",
@@ -18904,19 +18911,22 @@
                 "pos",
                 "recurring",
                 "refunds",
+                "riverty",
                 "sepa",
                 "service",
                 "sliceit",
                 "sofort",
                 "sofortbanking",
                 "subscriptions",
+                "trustly",
+                "twint",
                 "voucher"
             ],
             "support": {
                 "issues": "https://github.com/mollie/magento2/issues",
-                "source": "https://github.com/mollie/magento2/tree/v2.30.1"
+                "source": "https://github.com/mollie/magento2/tree/v2.41.0"
             },
-            "time": "2023-08-17T11:33:18+00:00"
+            "time": "2024-09-09T18:58:36+00:00"
         },
         {
             "name": "mollie/mollie-api-php",
