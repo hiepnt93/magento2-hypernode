@@ -6,15 +6,15 @@
     "OSL-3.0",
     "AFL-3.0"
   ],
-  "version": "2.4.4",
+  "version": "2.4.7-p3",
   "require": {
     "avstudnitz/scopehint2": "^1.1",
     "cweagans/composer-patches": "^1.7",
     "magefan/module-blog": "^2.10",
     "magento/composer-dependency-version-audit-plugin": "~0.1",
     "magento/composer-root-update-plugin": "~2.0",
-    "magento/product-community-edition": "2.4.5-p4",
-    "mollie/magento2": "2.30.1"
+    "magento/product-community-edition": "2.4.7-p3",
+    "mollie/magento2": "^2.41"
   },
   "autoload": {
     "exclude-from-classmap": [
@@ -39,7 +39,6 @@
   },
   "require-dev": {
     "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
-    "friendsofphp/php-cs-fixer": "~3.3.0",
     "hypernode/deploy-configuration": "^3.1",
     "magento/magento-coding-standard": "*",
     "phpstan/phpstan": "~1.2.0",
@@ -67,14 +66,6 @@
   ],
   "extra": {
     "magento-force": "override",
-    "composer-exit-on-patch-failure": true,
-    "patches": {
-      "magento/framework": {
-        "Convert deprecated charset/collation": "patches/mysql8029/framework.patch"
-      },
-      "magento/magento2-base": {
-        "Capture patch version of MySQL 8": "patches/mysql8029/magento2_base.patch"
-      }
-    }
+    "composer-exit-on-patch-failure": true
   }
 }
