@@ -9,40 +9,36 @@ use Hypernode\DeployConfiguration\PlatformConfiguration\HypernodeSettingConfigur
 use function Deployer\{after, before, invoke, run, task};
 
 $configuration = new ApplicationTemplate\Magento2(['en_US']);
+
 $configuration->addPlatformConfiguration(
     new HypernodeSettingConfiguration('php_version', '8.3')
 );
 
-task('magento:prepare_env:test', static function () {
-    run('cp ~/apps/magento2.komkommer.store/shared/app/etc/env.php {{release_path}}/app/etc/env.php');
-    run('cd {{release_path}}; n98-magerun2 config:env:set db.connection.default.host mysqlmaster');
-    invoke('magento:cache:flush');
-})->select('stage=test');
+$configuration->setPlatformConfigurations([
+    new PlatformConfiguration\HypernodeSettingConfiguration('supervisor_enabled', 'True'),
+    new PlatformConfiguration\HypernodeSettingConfiguration('rabbitmq_enabled', 'True'),
+    new PlatformConfiguration\HypernodeSettingConfiguration('elasticsearch_enabled', 'False'),
+    new PlatformConfiguration\HypernodeSettingConfiguration('opensearch_enabled', 'True'),
+    new PlatformConfiguration\HypernodeSettingConfiguration('varnish_enabled', 'True'),
+    new PlatformConfiguration\HypernodeSettingConfiguration('nodejs_version', '20'),
+]);
 
-task('magento:configure_env:test', static function () {
-    run('{{bin/php}} {{release_path}}/bin/magento config:set web/unsecure/base_url https://{{hostname}}/');
-    run('{{bin/php}} {{release_path}}/bin/magento config:set web/secure/base_url https://{{hostname}}/');
-    invoke('magento:cache:flush');
-})->select('stage=test');
+$configuration->setPlatformConfigurations([
+    new PlatformConfiguration\CronConfiguration('etc/cron')
+]);
 
-task('hmv:configure:test', static function () {
-    run('hypernode-manage-vhosts {{hostname}} --https --force-https --type magento2 --webroot {{current_path}}/{{public_folder}}');
-})->select('stage=test');
+$configuration->setPlatformConfigurations([
+    new PlatformConfiguration\NginxConfiguration('etc/nginx')
+]);
 
-before('magento:config:import', 'magento:prepare_env:test');
-after('magento:config:import', 'magento:configure_env:test');
+$configuration->setPlatformConfigurations([
+    new PlatformConfiguration\SupervisorConfiguration('etc/supervisor')
+]);
 
-$configuration->addDeployTask('hmv:configure:test');
 
-$stagingStage = $configuration->addStage('staging', 'staging.magento2.komkommer.store', 'hypernode');
-$stagingStage->addServer('production1135-hypernode.hipex.io');
+$productionStage = $configuration->addStage('production', 'whillstag.hypernode.io');
+$productionStage->addServer('whillstag.hypernode.io');
 
-$productionStage = $configuration->addStage('production', 'magento2.komkommer.store');
-$productionStage->addServer('hntestgroot.hypernode.io');
-
-$testStage = $configuration->addStage('test', 'test.komkommer.store');
-$testStage->addBrancherServer('hntestgroot')
-    ->setLabels(['stage=test', 'ci_ref=' . (\getenv('GITHUB_HEAD_REF') ?: 'none')]);
 
 $configuration->setSharedFiles([
     'app/etc/env.php',

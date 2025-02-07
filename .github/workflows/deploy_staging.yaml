@@ -17,8 +17,8 @@ jobs:
     concurrency: staging
     environment:
       name: production
-      url: https://staging.magento2.komkommer.store
-    container: hipex/deploy:v2.13.0-alpha.3-php8.1-node18
+      url: https://staging.whillstag.hypernode.io
+    container: hipex/deploy:v2.13.0-alpha.3-php8.3-node18
     steps:
       - uses: actions/checkout@v3
       - name: download build artifact
