@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     container: quay.io/hypernode/deploy:3-php8.3-node18
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/cache@v3
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
         with:
           path: /tmp/composer-cache
           key: ${{ runner.os }}-composer
@@ -20,7 +20,7 @@ jobs:
         env:
           COMPOSER_CACHE_DIR: /tmp/composer-cache
       - name: archive production artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: deployment-build
           path: build/build.tgz

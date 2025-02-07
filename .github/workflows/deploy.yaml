@@ -21,9 +21,9 @@ jobs:
       url: https://whillstag.hypernode.io
     container: quay.io/hypernode/deploy:3-php8.3-node18
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: download build artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: deployment-build
           path: build/

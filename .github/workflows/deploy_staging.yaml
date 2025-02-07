@@ -20,9 +20,9 @@ jobs:
       url: https://staging.whillstag.hypernode.io
     container: hipex/deploy:v2.13.0-alpha.3-php8.3-node18
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: download build artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: deployment-build
           path: build/
