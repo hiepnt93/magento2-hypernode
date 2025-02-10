@@ -23,13 +23,13 @@ $configuration->setPlatformConfigurations([
     new PlatformConfiguration\HypernodeSettingConfiguration('nodejs_version', '20'),
 ]);
 
-$configuration->setPlatformConfigurations([
-    new PlatformConfiguration\CronConfiguration('etc/cron')
-]);
+//$configuration->setPlatformConfigurations([
+//    new PlatformConfiguration\CronConfiguration('etc/cron')
+//]);
 
-$configuration->setPlatformConfigurations([
-    new PlatformConfiguration\NginxConfiguration('etc/nginx')
-]);
+//$configuration->setPlatformConfigurations([
+//    new PlatformConfiguration\NginxConfiguration('etc/nginx')
+//]);
 
 //$configuration->setPlatformConfigurations([
 //    new PlatformConfiguration\SupervisorConfiguration('etc/supervisor')
