@@ -31,9 +31,9 @@ $configuration->setPlatformConfigurations([
     new PlatformConfiguration\NginxConfiguration('etc/nginx')
 ]);
 
-$configuration->setPlatformConfigurations([
-    new PlatformConfiguration\SupervisorConfiguration('etc/supervisor')
-]);
+//$configuration->setPlatformConfigurations([
+//    new PlatformConfiguration\SupervisorConfiguration('etc/supervisor')
+//]);
 
 
 $productionStage = $configuration->addStage('production', 'whillstag.hypernode.io');
